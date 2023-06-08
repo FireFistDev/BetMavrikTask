@@ -11,10 +11,7 @@ export default function Wrapper({ children }) {
   const toast = useToast();
   const FetchUsers = () => {
     axios
-      .get('https://betmavrik-serv.onrender.com/api/users',  {headers:{
-        Access-Control-Allow-Origin:*
-      }}
-    )
+      .get('https://betmavrik-serv.onrender.com/api/users')
       .then((res) => {
         setUsers(res.data);
       })
@@ -25,7 +22,7 @@ export default function Wrapper({ children }) {
 
   const Search = (query) => {
     axios
-      .post(`/api/users/search?key=${query}`)
+      .post(`https://betmavrik-serv.onrender.com/api/users/search?key=${query}`)
       .then((res) => {
         setUsers(res.data);
       })
@@ -36,7 +33,7 @@ export default function Wrapper({ children }) {
 
   const Delete = (id) => {
     axios
-      .delete(`/api/users/${id}`)
+      .delete(`https://betmavrik-serv.onrender.com/api/users/${id}`)
       .then((res) => {
         setUsers(users.filter((u) => u._id != id));
         toast({
@@ -53,7 +50,7 @@ export default function Wrapper({ children }) {
 
   const Add = (form, setForm) => {
     axios
-      .post('/api/users', form)
+      .post('https://betmavrik-serv.onrender.com/api/users', form)
       .then((res) => {
         setUsers([...users, res.data]);
         toast({
@@ -73,7 +70,7 @@ export default function Wrapper({ children }) {
 
   const FindOne = async (id) => {
     await axios
-      .get(`/api/users/${id}`)
+      .get(`https://betmavrik-serv.onrender.com/api/users/${id}`)
       .then((res) => {
         setUser(res.data);
       })
@@ -84,7 +81,7 @@ export default function Wrapper({ children }) {
 
   const Update = (form, setForm, id) => {
     axios
-      .put(`/api/users/${id}`, form)
+      .put(`https://betmavrik-serv.onrender.com/api/users/${id}`, form)
       .then((res) => {
         toast({
           title: 'User Updated',
