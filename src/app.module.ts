@@ -3,8 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 
-console.log('yler');
-
 @Module({
   imports: [
     ConfigModule.forRoot(),
