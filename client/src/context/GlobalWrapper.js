@@ -11,7 +11,10 @@ export default function Wrapper({ children }) {
   const toast = useToast();
   const FetchUsers = () => {
     axios
-      .get('/api/users')
+      .get('https://betmavrik-serv.onrender.com/api/users',  {headers:{
+        Access-Control-Allow-Origin:*
+      }}
+    )
       .then((res) => {
         setUsers(res.data);
       })
